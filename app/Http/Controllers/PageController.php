@@ -8,7 +8,7 @@ class PageController extends Controller
 {
     public function register()
     {
-        echo 'registrarse';
+        return view('register');
     }
 
     public function checkout()
