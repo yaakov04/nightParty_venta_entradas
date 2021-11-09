@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::view('/', 'index')->name('home');
+
+Route::get('/register', [PageController::class, 'register'])->name('register');
+Route::post('/register', [PageController::class, 'checkout']);
+
+Route::get('/attendee/{payerID}', [PageController::class, 'attendee']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
