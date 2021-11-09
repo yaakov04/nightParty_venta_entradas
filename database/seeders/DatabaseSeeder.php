@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         ]);
         Event::create([
             'datetime'=>'2021-11-09 23:00:00',
-            'address'=>'Faker Street 221B, Fake City'
+            'address'=>'Faker Street 221B, Fake City',
+            'price'=>889.99
         ]);
     }
 }
