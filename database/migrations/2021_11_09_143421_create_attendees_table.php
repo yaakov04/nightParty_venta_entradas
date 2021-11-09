@@ -16,12 +16,17 @@ class CreateAttendeesTable extends Migration
         Schema::create('attendees', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('event_id');
+
             $table->string('name');
             $table->string('email');
             $table->boolean('paid')->default(0);
             $table->string('payerID')->nullable();
+            $table->string('qr')->nullable();
             $table->boolean('attended')->default(0);
             $table->dateTime('datetime')->nullable();
+
+            $table->foreign('event_id')->references('id')->on('events');
 
             $table->timestamps();
         });

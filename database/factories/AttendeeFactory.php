@@ -22,6 +22,8 @@ class AttendeeFactory extends Factory
             'email'=>$this->faker->unique()->safeEmail(),
             'paid'=>$paid,
             'payerID'=>$payerID,
+            'qr'=>$this->faker->imageUrl(320,320),
+            'event_id'=>1
             //'attended'=>'',
             //'datetime'=>''
             
