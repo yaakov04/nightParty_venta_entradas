@@ -10,12 +10,18 @@ class Payment
     protected $idItem;
     protected $currency;
     protected $amount;
-    protected $success;
-    protected $failure;
+    protected $linkSuccess;
+    protected $linkFailure;
+    
 
-    public function __construct(PaymentProcessor $paymentProcessor)
+    public function __construct(PaymentProcessor $paymentProcessor, Array $arg)
     {
        $this->paymentProcessor = $paymentProcessor;
+       $this->idItem = $arg['id'];
+       $this->amount = $arg['amount'];
+       $this->currency = $arg['currency'];
+       $this->linkSuccess = $arg['linkSuccess'];
+       $this->linkFailure = $arg['linkFailure'];
     }
 
     public function pay()
@@ -23,20 +29,4 @@ class Payment
         $this->paymentProcessor->pay();
     }
 
-    public function setItem(Array $item)
-    {
-        $this->idItem = $item['id'];
-        $this->amount = $item['amount'];
-    }
-
-    public function setCurrency(String $currency)
-    {
-        $this->currency = $currency;
-    }
-
-    public function setLinks(String $success, String $failure)
-    {
-        $this->success = $success;
-        $this->failure = $failure;
-    }
 }

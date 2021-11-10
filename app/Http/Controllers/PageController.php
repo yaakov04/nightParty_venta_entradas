@@ -32,7 +32,13 @@ class PageController extends Controller
         $amount = Event::where('id',$request->event)->get()[0]->price;
         $paymentMethod ="App\Classes\PaymentProcessor\\$request->paymentMethod";
         $paymentprocessor = new $paymentMethod;
-        $payment = new Payment($paymentprocessor);
+        $payment = new Payment($paymentprocessor, [
+            'id'=> $registerID,
+            'amount'=> $amount,
+            'currency'=>'MXN',
+            'linkSuccess'=>'',
+            'linkFailure'=>''
+        ]);
     }
 
     public function attendee(Attendee $attendee)
