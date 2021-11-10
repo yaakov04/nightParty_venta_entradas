@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration
             $table->dateTime('datetime');
             $table->string('address');
             $table->decimal('price', 10, 2);
+            $table->boolean('active')->default(1);
 
             $table->timestamps();
         });
