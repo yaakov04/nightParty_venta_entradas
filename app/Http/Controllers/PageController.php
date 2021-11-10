@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Payment;
 use App\Http\Requests\AttendeeRequest;
 use App\Models\Attendee;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -19,13 +21,18 @@ class PageController extends Controller
         $attendee = Attendee::create($request->all());
         $attendee->save();
         $registerID=$attendee->id;
+        $event = $attendee->event_id;
         
-        return redirect()->route('checkout',['registerID'=>$registerID,'paymentMethod'=>$paymentMethod]);
+        return redirect()->route('checkout',['registerID'=>$registerID,'paymentMethod'=>$paymentMethod, 'event'=>$event]);
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
-        echo 'checo';
+        $registerID=$request->registerID;
+        $amount = Event::where('id',$request->event)->get()[0]->price;
+        $paymentMethod ="App\Classes\PaymentProcessor\\$request->paymentMethod";
+        $paymentprocessor = new $paymentMethod;
+        $payment = new Payment($paymentprocessor);
     }
 
     public function attendee(Attendee $attendee)

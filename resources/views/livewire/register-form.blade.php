@@ -29,7 +29,7 @@
             </div>
             <div class="">
                 <label for="mercadoPago">Mercado Pago</label>
-                <input type="radio" name="paymentMethod" id="mercadoPago" value="mercadoPago required">
+                <input type="radio" name="paymentMethod" id="mercadoPago" value="mercadoPago"required>
             </div>
         </div>
     </fieldset>
