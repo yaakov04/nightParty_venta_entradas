@@ -10,7 +10,7 @@
                 <span class="hero__info-span"><i class="fas fa-map-marker-alt"></i> Monterrey, Mx</span>
             </div>
             <div class="hero__headline-container">
-                <h1 class="hero__headline">Night Party</h1>
+                <h1 class="hero__headline"><a href="{{ route('home') }}">Night Party</a></h1>
             </div>
             <div class="hero__btn-container">
                 <a href="{{ route('register') }}" class="hero__btn">Quiero entrar</a href="#">

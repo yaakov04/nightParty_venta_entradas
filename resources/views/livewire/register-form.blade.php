@@ -1,4 +1,4 @@
-<form action="{{ route('checkout') }}" method="post">
+<form action="{{ route('store') }}" method="post">
    
     @csrf
     @method('POST')

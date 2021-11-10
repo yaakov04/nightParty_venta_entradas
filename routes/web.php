@@ -21,7 +21,9 @@ Route::get('/', function () {
 Route::view('/', 'index')->name('home');
 
 Route::get('/register', [PageController::class, 'register'])->name('register');
-Route::post('/register', [PageController::class, 'checkout']);
+Route::post('/register', [PageController::class, 'store'])->name('store');
+
+Route::get('/checkout',[PageController::class, 'checkout'])->name('checkout');
 
 Route::get('/attendee/{attendee:payerID}', [PageController::class, 'attendee']);
 
