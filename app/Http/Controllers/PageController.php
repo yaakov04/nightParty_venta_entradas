@@ -23,7 +23,11 @@ class PageController extends Controller
         $registerID=$attendee->id;
         $event = $attendee->event_id;
         
-        return redirect()->route('checkout',['registerID'=>$registerID,'paymentMethod'=>$paymentMethod, 'event'=>$event]);
+        return redirect()->route('checkout',[
+            'registerID'=>$registerID,
+            'paymentMethod'=>$paymentMethod, 
+            'event'=>$event
+        ]);
     }
 
     public function checkout(Request $request)
@@ -33,19 +37,33 @@ class PageController extends Controller
         $paymentMethod ="App\Classes\PaymentProcessor\\$request->paymentMethod";
         $paymentprocessor = new $paymentMethod;
         $payment = new Payment($paymentprocessor, [
+            'brandName' => 'Night Party Eventos',
+            'titleOrder' => 'Night Party',
             'id'=> $registerID,
+            'descriptionItem'=> 'Entrada para Night Party',
             'amount'=> $amount,
             'currency'=>'MXN',
-            'linkSuccess'=>'',
+            'linkSuccess'=> route('success', ['registerID'=>$registerID ]),
             'linkFailure'=>''
         ]);
+        $payment->pay();
+    }
+
+    public function success(Request $request)
+    {
+        //echo 'Transacción exitosa';
+        echo '<br>';
+        var_dump($request->token);
+        echo '</br>';
+        $payerID = $request->token;
+        
     }
 
     public function attendee(Attendee $attendee)
     {
         $event=$attendee->eventToAttend()[0];
         $datetimeEvent=$event->datetime;
-        $addressEvent=isLessToHour(3,$datetimeEvent)?$event->address:'no disponible';
+        $addressEvent=isLessToHour(3,$datetimeEvent)?$event->address:'no disponible';//pasar esto a una funcion
         
         return view('attendee',[
             'attendee'=>$attendee,

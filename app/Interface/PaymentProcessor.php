@@ -2,7 +2,9 @@
 
 namespace App\Interface;
 
+use App\Classes\Payment;
+
 interface PaymentProcessor
 {
-    public function pay();
+    public function pay(Payment $payment);
 }
