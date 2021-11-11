@@ -50,7 +50,6 @@ class PaymentController extends Controller
                 'payerID'=>$response['token'],
             ]);
             $attendee->save();
-            //return redirect()->route('success',['ticket'=>$response['token']]);
             return redirect("http://localhost:5500/attendee/{$response['token']}")->with('status', 'Transaccion exitosa');
         }
     }
