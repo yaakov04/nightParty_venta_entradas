@@ -3,6 +3,11 @@
 @section('content')
 <livewire:header>
     <main>
+        @if (session('status'))
+            <div class="" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
         <h2>Entrada</h2>
         <div class="">
             <h3>

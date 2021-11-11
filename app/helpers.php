@@ -26,3 +26,10 @@ if (!function_exists('isLessToHour')) {
     }
 
 }
+
+if(true){
+    function paymentMethod($paymentMethod)
+    {
+        return "App\Classes\PaymentProcessor\\$paymentMethod";
+    }
+}

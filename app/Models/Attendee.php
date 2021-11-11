@@ -13,6 +13,11 @@ class Attendee extends Model
         'event_id',
         'name',
         'email',
+        'paid',
+        'payerID',
+        'qr',
+        'attended',
+        'datetime'
     ];
 
     public function event()

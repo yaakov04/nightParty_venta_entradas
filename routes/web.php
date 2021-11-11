@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,9 @@ Route::view('/', 'index')->name('home');
 Route::get('/register', [PageController::class, 'register'])->name('register');
 Route::post('/register', [PageController::class, 'store'])->name('store');
 
-Route::get('/checkout',[PageController::class, 'checkout'])->name('checkout');
+Route::get('/checkout',[PaymentController::class, 'checkout'])->name('checkout');
+Route::get('/finishing', [PaymentController::class, 'finishing'])->name('finishing');
 
-Route::get('/success',[PageController::class,'success'])->name('success');
 
 Route::get('/attendee/{attendee:payerID}', [PageController::class, 'attendee']);
 

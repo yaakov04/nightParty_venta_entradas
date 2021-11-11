@@ -17,22 +17,32 @@ class Payment
     protected $linkFailure;
     
 
-    public function __construct(PaymentProcessor $paymentProcessor, Array $arg)
+    public function __construct(PaymentProcessor $paymentProcessor, )
     {
-       $this->paymentProcessor = $paymentProcessor;
-       $this->brandName = $arg['brandName'];
-       $this->titleOrder = $arg['titleOrder'];
-       $this->idItem = $arg['id'];
-       $this->descriptionItem = $arg['descriptionItem'];
-       $this->amount = $arg['amount'];
-       $this->currency = $arg['currency'];
-       $this->linkSuccess = $arg['linkSuccess'];
-       $this->linkFailure = $arg['linkFailure'];
+        $this->paymentProcessor = $paymentProcessor;
     }
 
     public function pay()
     {
-        var_dump($this->paymentProcessor->pay($this));
+       return $this->paymentProcessor->pay($this);
+    }
+
+    public function finalizing($request)
+    {
+        return $this->paymentProcessor->finalizing($request);
+    }
+
+    public function setPayment(Array $arg)
+    {
+        
+        $this->brandName = $arg['brandName'];
+        $this->titleOrder = $arg['titleOrder'];
+        $this->idItem = $arg['id'];
+        $this->descriptionItem = $arg['descriptionItem'];
+        $this->amount = $arg['amount'];
+        $this->currency = $arg['currency'];
+        $this->linkSuccess = $arg['linkSuccess'];
+        $this->linkFailure = $arg['linkFailure'];
     }
 
     public function getTitleOrder()

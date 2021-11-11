@@ -6,6 +6,7 @@ use App\Classes\Payment;
 use App\Interface\PaymentProcessor;
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
 use PayPalCheckoutSdk\Core\SandboxEnvironment;
+use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
 use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 use PayPalHttp\HttpException;
 
@@ -21,7 +22,25 @@ class paypal implements PaymentProcessor
     {
        $this->environment = new SandboxEnvironment(config('paypal.clientId'),config('paypal.clientSecret'));
        $this->client = new PayPalHttpClient($this->environment);
-       $this->request = new OrdersCreateRequest();
+    }
+
+    public function finalizing($request)
+    {
+        $token = $request->token;
+        $this->request = new OrdersCaptureRequest($token);
+        $this->request->prefer('return=representation');
+        try {
+            $response = $this->client->execute( $this->request);
+        }catch (HttpException $ex) {
+            echo $ex->statusCode;
+            print_r($ex->getMessage());
+        }
+        //dd($response);
+        $status = $response->result->status;
+        return [
+            'status' => $status  == 'COMPLETED',
+            'token' => $response->result->id
+        ];
     }
 
     public function execute()
@@ -36,7 +55,7 @@ class paypal implements PaymentProcessor
 
     public function buildOrder()
     {
-      
+        $this->request = new OrdersCreateRequest();
         $this->request->prefer('return=representation');
         $this->request->body=[
             "intent"=>"CAPTURE",
@@ -44,7 +63,7 @@ class paypal implements PaymentProcessor
                 'return_url' => $this->payment->getLinkSuccess(),
                 'cancel_url' => $this->payment->getLinkFailure(),
                 'brand_name' => $this->payment->getbrandName(),
-                'locale' => 'es-MX',
+                'locale' => 'en-US',
                 'user_action' => 'PAY_NOW',
             ],
             "purchase_units" => [[
@@ -82,6 +101,7 @@ class paypal implements PaymentProcessor
     public function pay(Payment $payment)
     {
         $this->payment = $payment;
+
         $this->buildOrder();
         $this->execute();
         return $this->response->result->links[1]->href;
