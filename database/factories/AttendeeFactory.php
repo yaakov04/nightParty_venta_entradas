@@ -24,9 +24,6 @@ class AttendeeFactory extends Factory
             'payerID'=>$payerID,
             'qr'=>$this->faker->imageUrl(320,320),
             'event_id'=>1
-            //'attended'=>'',
-            //'datetime'=>''
-            
         ];
     }
     

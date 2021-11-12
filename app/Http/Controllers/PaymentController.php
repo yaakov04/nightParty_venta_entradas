@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Payment;
-use App\Http\Requests\AttendeeRequest;
 use App\Models\Attendee;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -45,9 +44,11 @@ class PaymentController extends Controller
         $response = $payment->finalizing($request);
         if ($response['status']) {
             $attendee = Attendee::where('id', $registerID)->get()[0];
+            $qr = getQr("public/qr", $response['token']);
             $attendee->update([
                 'paid'=>1,
                 'payerID'=>$response['token'],
+                'qr' => $qr
             ]);
             $attendee->save();
             return redirect("http://localhost:5500/attendee/{$response['token']}")->with('status', 'Transaccion exitosa');
