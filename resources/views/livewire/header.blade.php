@@ -13,7 +13,7 @@
                 <h1 class="hero__headline"><a href="{{ route('home') }}">Night Party</a></h1>
             </div>
             <div class="hero__btn-container">
-                <a href="{{ route('register') }}" class="hero__btn">Quiero entrar</a href="#">
+               <x-link-button :linkButton="$linkButton" />
             </div>
         </div>
 

@@ -32,7 +32,14 @@ class PaymentController extends Controller
             ]),
             'linkFailure'=>''
         ]);
-        var_dump($payment->pay());
+        //var_dump($payment->pay());
+        return view('checkout', [
+            'amount'=> $amount,
+            'linkButton'=>[
+                'url'=>$payment->pay(),
+                'innerText'=>'Pagar'
+            ]
+        ]);
     }
 
     public function finishing(Request $request)

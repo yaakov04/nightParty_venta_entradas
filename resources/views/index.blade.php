@@ -12,7 +12,7 @@
             </section>
             <section class="section-color">
                 <figure>
-                    <img src="./img/foto-dj.jpg" alt="Fotografía de un DJ">
+                    <img src="{{ asset('img/foto-dj.jpg') }}" alt="Fotografía de un DJ">
                 </figure>
                 <p class="section-color__p">
                     Integer luctus nibh tincidunt, iaculis erat in, fermentum est. Aenean ut hendrerit metus. Morbi vitae augue vel justo porttitor sagittis at a nisi.
@@ -20,7 +20,7 @@
             </section>
             <section class="section-color">
                 <figure>
-                    <img src="./img/foto-fiesta-1.jpg" alt="Fotografía de una fiesta">
+                    <img src="{{ asset('img/foto-fiesta-1.jpg') }}" alt="Fotografía de una fiesta">
                 </figure>
                 <p class="section-color__p section-color__p--blue">
                     Integer luctus nibh tincidunt, iaculis erat in, fermentum est. Aenean ut hendrerit metus. Morbi vitae augue vel justo porttitor sagittis at a nisi.
