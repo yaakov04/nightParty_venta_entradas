@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/471047becf.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/desktop.css') }}" media="screen and (min-width: 1100px)">
 </head>
 <body>
     @yield('content')

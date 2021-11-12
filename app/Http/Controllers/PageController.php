@@ -21,11 +21,12 @@ class PageController extends Controller
         $registerID=$attendee->id;
         $event = $attendee->event_id;
         
-        return redirect()->route('checkout',[
-            'registerID'=>$registerID,
-            'paymentMethod'=>$paymentMethod, 
-            'event'=>$event
-        ]);
+       return redirect()->to(route('checkout',[
+        'registerID'=>$registerID,
+        'paymentMethod'=>$paymentMethod, 
+        'event'=>$event
+    ]).'#checkout');
+        //return redirect('http://localhost:5500/checkout#checkout')
     }
 
     public function attendee(Attendee $attendee)

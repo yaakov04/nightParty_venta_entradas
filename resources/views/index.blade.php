@@ -14,11 +14,11 @@
                 <figure>
                     <img src="{{ asset('img/foto-dj.jpg') }}" alt="Fotografía de un DJ">
                 </figure>
-                <p class="section-color__p">
+                <p class="section-color__p section-color__p--f27">
                     Integer luctus nibh tincidunt, iaculis erat in, fermentum est. Aenean ut hendrerit metus. Morbi vitae augue vel justo porttitor sagittis at a nisi.
                 </p>
             </section>
-            <section class="section-color">
+            <section class="section-color section-color--reverse">
                 <figure>
                     <img src="{{ asset('img/foto-fiesta-1.jpg') }}" alt="Fotografía de una fiesta">
                 </figure>

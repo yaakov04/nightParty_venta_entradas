@@ -10,7 +10,7 @@ class Header extends Component
     {
         return view('livewire.header',[
             'linkButton'=>[
-                'url'=>route('register'),
+                'url'=>"http://localhost:5500/register#form",
                 'innerText'=>'Quiero entrar'
             ]
         ]);

@@ -1,0 +1,92 @@
+body {
+    font-size: 1.8rem;
+}
+
+.container {
+    width: 96rem;
+    margin: 0 auto;
+}
+
+
+/**header**/
+
+.hero__headline {
+    font-size: 7.3rem;
+}
+
+
+/**section-color**/
+
+.section-color {
+    display: flex;
+    flex-direction: row;
+}
+
+.section-color--reverse {
+    flex-direction: row-reverse;
+}
+
+.section-color__p {
+    font-size: 2.3rem;
+    flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+}
+
+.section-color__p--f27 {
+    font-size: 2.7rem;
+}
+
+
+/**form**/
+
+.input-paymentMethod>div {
+    width: 50%;
+}
+
+.btn-submit {
+    width: inherit;
+}
+
+
+/**checkout-section**/
+
+.checkout-section {
+    text-align: center;
+}
+
+
+/**Footer**/
+
+.section-end__headline {
+    font-size: 3.5rem;
+}
+
+.section-end-container h3 {
+    font-size: 2.5rem;
+}
+
+.section-end__footer {
+    font-size: 1.8rem;
+}
+
+
+/**attendee-section**/
+
+.status {
+    text-align: center;
+}
+
+.attendee-section h3 {
+    text-align: center;
+}
+
+.figure-container {
+    display: flex;
+    justify-content: center;
+}
+
+.attendee-section figure {
+    width: 32rem;
+    margin-top: 1rem;
+}

@@ -2,15 +2,17 @@
 
 @section('content')
 <livewire:header>
-    <h2>Checkout</h2>
+    <h2 id="checkout">Checkout</h2>
     <main>
-        <h3>Usted esta adquiriendo una entrada para Night Party</h3>
-        <h3>Costo: 	&#36;{{ $amount }}</h3>
+        <div class="container checkout-section">
+        <p>Usted esta adquiriendo una entrada para Night Party</p>
+        <p>Costo: 	&#36;{{ $amount }}</p>
         <br>
         <x-link-button :linkButton="$linkButton" />
         <br>
         <br>
         <br>
+        </div>
     </main>
 <livewire:footer>
 @endsection

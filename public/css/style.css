@@ -182,3 +182,120 @@ img {
     padding-bottom: .5rem;
     margin-bottom: 0;
 }
+
+
+/**form**/
+
+form {
+    margin-bottom: 4rem;
+}
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+legend {
+    font-size: 2.2rem;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.label {
+    font-size: 1.8rem;
+    margin-bottom: .7rem;
+}
+
+.input input {
+    border: none;
+    border-radius: .5rem;
+    padding: 1rem;
+    font-size: 1.8rem;
+}
+
+select {
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0!important;
+    background: var(--backgroundColor);
+    flex: 1;
+    padding: 0;
+    color: var(--white);
+    cursor: pointer;
+    text-align: center;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding: .7rem 0;
+    line-height: 3;
+    background: var(--backgroundColor);
+    overflow: hidden;
+    border-radius: .3rem;
+    border: .1rem solid var(--white);
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: -.7rem;
+    right: 0;
+    padding: 0 1rem;
+    background: var(--backgroundColor);
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.input-paymentMethod {
+    margin: 1rem 0;
+}
+
+.input-paymentMethod>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.paymentMethod {
+    flex: 0 0 calc(50% - .5rem);
+}
+
+.paymentMethod img {
+    cursor: pointer;
+}
+
+.btn-submit {
+    border: .1rem solid var(--white);
+    font-size: 1.8rem;
+    width: 100%;
+}
+
+
+/**attendee-section**/
+
+.status {
+    width: 100%;
+    text-align: left;
+    border: .1rem solid var(--white);
+    padding: 1rem;
+}
+
+.attendee-section h3 {
+    font-weight: 400;
+    text-align: left;
+}
+
+.attendee-section figure {
+    padding: 0 4rem;
+}

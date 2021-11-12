@@ -13,7 +13,9 @@
                 <h1 class="hero__headline"><a href="{{ route('home') }}">Night Party</a></h1>
             </div>
             <div class="hero__btn-container">
+               @if(Request::is('/'))
                <x-link-button :linkButton="$linkButton" />
+               @endif
             </div>
         </div>
 

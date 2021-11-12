@@ -2,7 +2,7 @@
 
 @section('content')
 <livewire:header>
-    <h2>Una experiencia inolvidable</h2>
+    <h2 id="form">Una experiencia inolvidable</h2>
     <main>
        <livewire:register-form>
     </main>
