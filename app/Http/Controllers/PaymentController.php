@@ -58,7 +58,7 @@ class PaymentController extends Controller
                 'qr' => $qr
             ]);
             $attendee->save();
-            return redirect("http://localhost:5500/attendee/{$response['token']}#ticket")->with('status', 'Transaccion exitosa');
+            return redirect()->to(route('attendee', $response['token'])."#ticket");
         }
     }
 

@@ -27,7 +27,7 @@ Route::post('/register', [PageController::class, 'store'])->name('store');
 Route::get('/checkout',[PaymentController::class, 'checkout'])->name('checkout');
 Route::get('/finishing', [PaymentController::class, 'finishing'])->name('finishing');
 
-Route::get('/attendee/{attendee:payerID}', [PageController::class, 'attendee']);
+Route::get('/attendee/{attendee:payerID}', [PageController::class, 'attendee'])->name('attendee');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin-panel/dashboard', function () {
     return view('dashboard');

@@ -10,7 +10,7 @@ class Footer extends Component
     {
         return view('livewire.footer',[
             'linkButton'=>[
-                'url'=>"http://localhost:5500/register#form",
+                'url'=>route('register')."#form",
                 'innerText'=>'Quiero entrar'
             ]
         ]);

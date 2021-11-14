@@ -1102,6 +1102,17 @@ select {
 .prose > :last-child {
 	margin-bottom: 0;
 }
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
 .fixed {
 	position: fixed;
 }
@@ -1135,9 +1146,16 @@ select {
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
+.float-right {
+	float: right;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
+}
+.my-2 {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 .ml-3 {
 	margin-left: 0.75rem;
@@ -1211,6 +1229,12 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
+.mt-0 {
+	margin-top: 0px;
+}
+.ml-auto {
+	margin-left: auto;
+}
 .block {
 	display: block;
 }
@@ -1252,6 +1276,9 @@ select {
 }
 .h-20 {
 	height: 5rem;
+}
+.h-auto {
+	height: auto;
 }
 .min-h-screen {
 	min-height: 100vh;
