@@ -28,7 +28,8 @@ class AttendeeController extends Controller
      */
     public function create()
     {
-        //
+        $events = Event::where('active', 1)->take(5)->get();
+        return view('admin-attendee-create', compact('events'));
     }
 
     /**
@@ -39,18 +40,19 @@ class AttendeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Attendee  $attendee
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Attendee $attendee)
-    {
-        //
+        if ($request->paid) {
+            $payerID=uniqid();
+            $qr = getQr("public/qr", $payerID);
+            $attendee = Attendee::create([
+                'payerID'=>$payerID,
+                'qr'=>$qr
+            ]+ $request->all());
+            
+        }else{
+            $attendee = Attendee::create($request->all());
+        }
+        $attendee->save();
+        return back()->with('status', 'Creado con éxito');
     }
 
     /**
@@ -83,7 +85,13 @@ class AttendeeController extends Controller
             'qr'=>$qr
             ]+$request->all());
         }else{
-            $attendee->update($request->all());
+            Storage::disk('public')->delete('qr/'.$attendee->payerID.'.png');
+            $attendee->update($request->all()+[
+                'paid'=>0,
+                'payerID'=>'',
+                'qr'=>''
+            ]);
+            
         }
         $attendee->save();
         return back()->with('status', 'Actualizado con éxito');
@@ -97,8 +105,8 @@ class AttendeeController extends Controller
      */
     public function destroy(Attendee $attendee)
     {
+        Storage::disk('public')->delete('qr/'.$attendee->payerID.'.png');
         $attendee->delete();
-        Storage::disk('public')->delete('qr/'.$attendee->qr);
         return back()->with('status', 'Eliminado con éxito');
     }
 }

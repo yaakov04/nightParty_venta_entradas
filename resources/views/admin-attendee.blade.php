@@ -10,6 +10,10 @@
     </div>
 @endif
 
+<div class="mx-4 my-3 p-3 bg-white rounded-md shadow flex justify-end">
+    <a href="{{ route('attendee.create') }}" class="px-4 py-1 mr-3 bg-blue-500 rounded shadow text-white"><i class="fas fa-plus"></i></a>
+</div>
+
 @foreach($attendees as $attendee)
 
 <div class="m-4 p-3 bg-white rounded-md shadow flex items-center text-gray-500 text-base">
