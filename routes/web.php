@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AttendeeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,7 @@ Route::get('/attendee/{attendee:payerID}', [PageController::class, 'attendee'])-
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin-panel/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+//php artisan make:controller Backend/AttendeeController --resource --model=Attendee
+Route::middleware(['auth:sanctum', 'verified'])->resource('/admin-panel/attendee', AttendeeController::class)
+        ->except('show');
