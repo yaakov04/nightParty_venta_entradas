@@ -21,5 +21,7 @@
 </div>
 
 <a href="{{ route('attendee.index') }}" class="block m-4 p-3 bg-blue-500 rounded-md text-center text-white text-lg cursor-pointer">Ver Registrados</a>
+<a href="{{ route('event.index') }}" class="block m-4 p-3 bg-green-500 rounded-md text-center text-white text-lg cursor-pointer">Ver Eventos</a>
+
 @endsection
    
