@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="{{ route('attendee.index') }}" :active="request()->routeIs('attendee.index')">
                         {{ __('Registrados') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('event.index') }}" :active="request()->routeIs('event.index')">
+                        {{ __('Eventos') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -146,6 +149,9 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('attendee.index') }}" :active="request()->routeIs('attendee.index')">
                 {{ __('Registrados') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('event.index') }}" :active="request()->routeIs('event.index')">
+                {{ __('Eventos') }}
             </x-jet-responsive-nav-link>
         </div>
 

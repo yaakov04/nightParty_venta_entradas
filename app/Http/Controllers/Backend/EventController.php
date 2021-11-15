@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EventRequest;
+use App\Models\Attendee;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('admin-event');
+        $events = Event::paginate(7);
+        $attendees = Attendee::count();
+        return view('admin-event', compact('events', 'attendees'));
     }
 
     /**
@@ -25,7 +29,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('admin-avent-create');
+        return view('admin-event-create');
     }
 
     /**
@@ -34,9 +38,14 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $datetime = $request->date .' '. $request->time;
+        $event = Event::create($request->all()+[
+            'datetime'=>$datetime
+        ]);
+        $event->save();
+        return back()->with('status', 'Evento creado con éxito');
     }
 
 

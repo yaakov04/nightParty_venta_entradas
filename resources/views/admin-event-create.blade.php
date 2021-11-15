@@ -11,20 +11,24 @@
 @endif
 
 <div class="mx-4 p-3 bg-white rounded-md shadow">
-    <form action="{{ route('attendee.store') }}" method="post">
+    <form action="{{ route('event.store') }}" method="post">
         @csrf
         @method('POST')
         <div class="my-3 flex flex-col">
-            <label class="font-bold" for="name">Nombre:</label>
-            <input class="rounded-md border-gray-300" id="name" name="name" type="text" required>
+            <label class="font-bold" for="address">Dirección:</label>
+            <input class="rounded-md border-gray-300" id="address" name="address" type="text" required>
         </div>
         <div class="my-3 flex flex-col">
-            <label class="font-bold" for="email">Email:</label>
-            <input class="rounded-md border-gray-300" id="email" name="email" type="email" required>
+            <label class="font-bold" for="date">Fecha:</label>
+            <input class="rounded-md border-gray-300" id="date" name="date" type="date" required>
         </div>
         <div class="my-3 flex flex-col">
-            <label class="font-bold" for="email">Precio:</label>
-            <input class="rounded-md border-gray-300" id="email" name="email" type="email" required>
+            <label class="font-bold" for="time">Hora:</label>
+            <input class="rounded-md border-gray-300" id="time" name="time" type="time" required>
+        </div>
+        <div class="my-3 flex flex-col">
+            <label class="font-bold" for="price">Precio:</label>
+            <input class="rounded-md border-gray-300" id="price" name="price" type="number" min="1" step="any" required>
         </div>
         <div class="my-3 flex items-center">
             <label class="font-bold" for="paid">Activo:</label>
