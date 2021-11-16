@@ -17,7 +17,7 @@ class AttendeeController extends Controller
      */
     public function index()
     {
-        $attendees = Attendee::paginate(7);
+        $attendees = Attendee::paginate(9);
         return view('admin-attendee', compact('attendees'));
     }
 

@@ -1149,15 +1149,23 @@ select {
 .float-right {
 	float: right;
 }
-.m-3 {
-	margin: 0.75rem;
-}
 .m-4 {
 	margin: 1rem;
+}
+.m-3 {
+	margin: 0.75rem;
 }
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
+}
+.mx-4 {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+.my-3 {
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
 }
 .mx-3 {
 	margin-left: 0.75rem;
@@ -1170,14 +1178,6 @@ select {
 .my-7 {
 	margin-top: 1.75rem;
 	margin-bottom: 1.75rem;
-}
-.mx-4 {
-	margin-left: 1rem;
-	margin-right: 1rem;
-}
-.my-3 {
-	margin-top: 0.75rem;
-	margin-bottom: 0.75rem;
 }
 .ml-3 {
 	margin-left: 0.75rem;
@@ -1610,6 +1610,14 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
+.bg-green-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
+}
+.bg-blue-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
+}
 .bg-blue-600 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
@@ -1621,14 +1629,6 @@ select {
 .bg-green-700 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(4, 120, 87, var(--tw-bg-opacity));
-}
-.bg-green-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
-}
-.bg-blue-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
 }
 .bg-red-500 {
 	--tw-bg-opacity: 1;
@@ -1982,6 +1982,14 @@ select {
 }
 .ease-in {
 	transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+@media(min-width:1024px) {
+    .grid_card {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        -moz-column-gap: 1rem;
+             column-gap: 1rem;
+    }
 }
 .hover\:border-gray-300:hover {
 	--tw-border-opacity: 1;
@@ -2382,9 +2390,28 @@ select {
 		grid-column: span 4 / span 4;
 	}
 
+	.lg\:inline {
+		display: inline;
+	}
+
+	.lg\:flex {
+		display: flex;
+	}
+
+	.lg\:w-14 {
+		width: 3.5rem;
+	}
+
+	.lg\:w-96 {
+		width: 24rem;
+	}
+
+	.lg\:w-52 {
+		width: 13rem;
+	}
+
 	.lg\:px-8 {
 		padding-left: 2rem;
 		padding-right: 2rem;
 	}
 }
-
