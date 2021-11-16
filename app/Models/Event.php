@@ -35,4 +35,11 @@ class Event extends Model
         $attendees = Attendee::select('event_id')->where('event_id', $this->id)->count();
         return $attendees;
     }
+
+    public function earnings()
+    {
+        $attendees = Attendee::select('event_id')->where('event_id', $this->id)->count();
+        $price = $this->price;
+        return $attendees * $price;
+    }
 }
