@@ -9,6 +9,11 @@
         {{ session('status') }}
     </div>
 @endif
+@if (session('error'))
+    <div class="py-2 m-4 bg-red-500 rounded shadow text-white font-bold text-center" role="alert">
+        {{ session('error') }}
+    </div>
+@endif
 
 <div class="mx-4 my-3 p-3 bg-white rounded-md shadow flex justify-end">
     <a href="{{ route('event.create') }}" class="px-4 py-1 mr-3 bg-blue-500 rounded shadow text-white"><i class="fas fa-plus"></i></a>
@@ -48,12 +53,12 @@
         </div>
         <div class="flex flex-wrap overflow-hidden">
             <h3 class="mr-3 font-bold">Asistentes:</h3>
-            <span>{{ $attendees }}</span>
+            <span>{{ $event->getAttendees() }}</span>
         </div>
       
         <div class="flex flex-wrap overflow-hidden mt-3">
-            <a href="#" class="px-4 py-1 mr-3 bg-blue-500 rounded shadow text-white"><i class="fas fa-edit"></i></a>
-            <form action="" method="post">
+            <a href="{{ route('event.edit', $event) }}" class="px-4 py-1 mr-3 bg-blue-500 rounded shadow text-white"><i class="fas fa-edit"></i></a>
+            <form action="{{ route('event.destroy', $event) }}" method="post">
             @csrf
             @method('DELETE')
                 <button type="submit" onclick="return confirm('¿Deseas eliminar este registro?')" class="px-4 py-1 bg-red-500 rounded shadow text-white"><i class="fas fa-trash"></i></button>
@@ -65,5 +70,6 @@
     
 @endforeach
 
+{{ $events }}
 
 @endsection

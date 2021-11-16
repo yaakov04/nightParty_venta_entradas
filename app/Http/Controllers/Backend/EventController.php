@@ -18,8 +18,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::paginate(7);
-        $attendees = Attendee::count();
-        return view('admin-event', compact('events', 'attendees'));
+        return view('admin-event', compact('events'));
     }
 
     /**
@@ -57,7 +56,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('admin-event-edit', compact('event'));
     }
 
     /**
@@ -67,9 +66,22 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
-        //
+        $datetime = $request->date .' '. $request->time;
+        //dd($request->active);
+        if ($request->active) {
+            $event->update($request->all()+[
+                'datetime'=>$datetime
+            ]);
+        }else{
+            $event->update($request->all()+[
+                'datetime'=>$datetime,
+                'active'=>0
+            ]);
+        }
+        
+        return back()->with('status', 'Evento actualizado con éxito');
     }
 
     /**
@@ -79,7 +91,11 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Event $event)
-    {
-        //
+    {   
+        if(!$event->getAttendees()){
+            $event->delete();
+            return back()->with('status', 'Evento eliminado con éxito');
+        }
+        return back()->with('error', 'No puede eliminarse un evento con asistentes');
     }
 }
